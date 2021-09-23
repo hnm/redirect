@@ -1,0 +1,341 @@
+{
+    "specs": {
+        "redirect-redirect-rule": {
+            "type": "entity",
+            "entity": "redirect\\bo\\RedirectRule",
+            "dataSourceName": null,
+            "label": "Redirect Rule",
+            "pluralLabel": "Redirect Rules",
+            "identityStringPattern": "{hostPattern} {pathPattern}",
+            "fields": {
+                "hostPattern": {
+                    "class": "rocket\\spec\\ei\\component\\field\\impl\\string\\StringEiField",
+                    "props": {
+                        "displayInOverview": true,
+                        "displayInDetailView": true,
+                        "displayInEditView": true,
+                        "displayInAddView": true,
+                        "constant": false,
+                        "readOnly": false,
+                        "mandatory": false,
+                        "draftable": false,
+                        "maxlength": "255",
+                        "multiline": false
+                    },
+                    "label": "Host Pattern",
+                    "objectProperty": "hostPattern",
+                    "entityProperty": "hostPattern"
+                },
+                "pathPattern": {
+                    "class": "rocket\\spec\\ei\\component\\field\\impl\\string\\StringEiField",
+                    "props": {
+                        "displayInOverview": true,
+                        "displayInDetailView": true,
+                        "displayInEditView": true,
+                        "displayInAddView": true,
+                        "constant": false,
+                        "readOnly": false,
+                        "mandatory": true,
+                        "draftable": false,
+                        "maxlength": "255",
+                        "multiline": false
+                    },
+                    "label": "Path Pattern",
+                    "objectProperty": "pathPattern",
+                    "entityProperty": "pathPattern"
+                },
+                "isRegex": {
+                    "class": "rocket\\spec\\ei\\component\\field\\impl\\bool\\BooleanEiField",
+                    "props": {
+                        "displayInOverview": false,
+                        "displayInDetailView": true,
+                        "displayInEditView": true,
+                        "displayInAddView": true,
+                        "constant": false,
+                        "readOnly": false,
+                        "draftable": false
+                    },
+                    "label": "Is Regex",
+                    "objectProperty": "isRegex",
+                    "entityProperty": "isRegex"
+                },
+                "targetUrlStr": {
+                    "class": "rocket\\spec\\ei\\component\\field\\impl\\string\\StringEiField",
+                    "props": {
+                        "displayInOverview": true,
+                        "displayInDetailView": true,
+                        "displayInEditView": true,
+                        "displayInAddView": true,
+                        "constant": false,
+                        "readOnly": false,
+                        "mandatory": true,
+                        "draftable": false,
+                        "maxlength": "255",
+                        "relativeAllowed": false,
+                        "allowedProtocols": [],
+                        "autoScheme": "http"
+                    },
+                    "label": "Target Url",
+                    "objectProperty": "targetUrlStr",
+                    "entityProperty": "targetUrlStr"
+                },
+                "orderIndex": {
+                    "class": "rocket\\spec\\ei\\component\\field\\impl\\numeric\\OrderEiField",
+                    "props": {
+                        "displayInOverview": false,
+                        "displayInDetailView": true,
+                        "displayInEditView": true,
+                        "displayInAddView": false,
+                        "constant": false,
+                        "readOnly": true,
+                        "mandatory": false,
+                        "draftable": false,
+                        "minValue": "0",
+                        "maxValue": "4294967295"
+                    },
+                    "label": "Order Index",
+                    "objectProperty": "orderIndex",
+                    "entityProperty": "orderIndex"
+                }
+            },
+            "commands": {
+                "addEiCommand": {
+                    "class": "rocket\\spec\\ei\\component\\command\\impl\\common\\AddEiCommand",
+                    "props": []
+                },
+                "overviewEiCommand": {
+                    "class": "rocket\\spec\\ei\\component\\command\\impl\\common\\OverviewEiCommand",
+                    "props": []
+                },
+                "detailEiCommand": {
+                    "class": "rocket\\spec\\ei\\component\\command\\impl\\common\\DetailEiCommand",
+                    "props": []
+                },
+                "editEiCommand": {
+                    "class": "rocket\\spec\\ei\\component\\command\\impl\\common\\EditEiCommand",
+                    "props": []
+                },
+                "deleteEiCommand": {
+                    "class": "rocket\\spec\\ei\\component\\command\\impl\\common\\DeleteEiCommand",
+                    "props": []
+                }
+            },
+            "modificators": [],
+            "defaultMaskId": null
+        },
+        "redirect-redirect-log-entry-fail": {
+            "type": "entity",
+            "entity": "redirect\\bo\\RedirectLogEntryFail",
+            "dataSourceName": null,
+            "label": "Redirect Log Entry Fail",
+            "pluralLabel": "Redirect Log Entry Fails",
+            "defaultSort": {
+                "created": "DESC"
+            },
+            "fields": [],
+            "commands": {
+                "overviewEiCommand": {
+                    "class": "rocket\\spec\\ei\\component\\command\\impl\\common\\OverviewEiCommand",
+                    "props": []
+                },
+                "detailEiCommand": {
+                    "class": "rocket\\spec\\ei\\component\\command\\impl\\common\\DetailEiCommand",
+                    "props": []
+                },
+                "deleteEiCommand": {
+                    "class": "rocket\\spec\\ei\\component\\command\\impl\\common\\DeleteEiCommand",
+                    "props": []
+                }
+            },
+            "modificators": [],
+            "defaultMaskId": null
+        },
+        "redirect-redirect-log-entry-adapter": {
+            "type": "entity",
+            "entity": "redirect\\bo\\RedirectLogEntryAdapter",
+            "dataSourceName": null,
+            "label": "RedirectLogEntryAdapter",
+            "pluralLabel": "RedirectLogEntryAdapters",
+            "defaultSort": {
+                "created": "DESC"
+            },
+            "fields": {
+                "fromUrlStr": {
+                    "class": "rocket\\spec\\ei\\component\\field\\impl\\string\\StringEiField",
+                    "props": {
+                        "displayInOverview": true,
+                        "displayInDetailView": true,
+                        "displayInEditView": true,
+                        "displayInAddView": true,
+                        "constant": false,
+                        "readOnly": false,
+                        "mandatory": true,
+                        "draftable": false,
+                        "maxlength": "255",
+                        "relativeAllowed": false,
+                        "allowedProtocols": [],
+                        "autoScheme": "http"
+                    },
+                    "label": "From Url",
+                    "objectProperty": "fromUrlStr",
+                    "entityProperty": "fromUrlStr"
+                },
+                "description": {
+                    "class": "rocket\\spec\\ei\\component\\field\\impl\\string\\StringEiField",
+                    "props": {
+                        "displayInOverview": true,
+                        "displayInDetailView": true,
+                        "displayInEditView": true,
+                        "displayInAddView": true,
+                        "constant": false,
+                        "readOnly": false,
+                        "mandatory": true,
+                        "draftable": false,
+                        "maxlength": null,
+                        "multiline": true
+                    },
+                    "label": "Description",
+                    "objectProperty": "description",
+                    "entityProperty": "description"
+                },
+                "created": {
+                    "class": "rocket\\spec\\ei\\component\\field\\impl\\date\\DateTimeEiField",
+                    "props": {
+                        "displayInOverview": true,
+                        "displayInDetailView": true,
+                        "displayInEditView": false,
+                        "displayInAddView": false,
+                        "constant": false,
+                        "readOnly": true,
+                        "mandatory": true,
+                        "draftable": false,
+                        "dateStyle": "medium",
+                        "timeStyle": "short"
+                    },
+                    "label": "Created",
+                    "objectProperty": "created",
+                    "entityProperty": "created"
+                }
+            },
+            "commands": {
+                "overviewEiCommand": {
+                    "class": "rocket\\spec\\ei\\component\\command\\impl\\common\\OverviewEiCommand",
+                    "props": []
+                },
+                "detailEiCommand": {
+                    "class": "rocket\\spec\\ei\\component\\command\\impl\\common\\DetailEiCommand",
+                    "props": []
+                },
+                "deleteEiCommand": {
+                    "class": "rocket\\spec\\ei\\component\\command\\impl\\common\\DeleteEiCommand",
+                    "props": []
+                }
+            },
+            "modificators": [],
+            "defaultMaskId": null
+        },
+        "redirect-redirect-log-entry-not-found": {
+            "type": "entity",
+            "entity": "redirect\\bo\\RedirectLogEntryNotFound",
+            "dataSourceName": null,
+            "label": "Redirect Log Entry Not Found",
+            "pluralLabel": "Redirect Log Entry Not Founds",
+            "defaultSort": {
+                "created": "DESC"
+            },
+            "fields": {
+                "id": {
+                    "class": "rocket\\spec\\ei\\component\\field\\impl\\numeric\\IntegerEiField",
+                    "props": {
+                        "displayInOverview": false,
+                        "displayInDetailView": true,
+                        "displayInEditView": false,
+                        "displayInAddView": false,
+                        "constant": false,
+                        "readOnly": true,
+                        "mandatory": false,
+                        "draftable": false,
+                        "minValue": "0",
+                        "maxValue": "4294967295"
+                    },
+                    "label": "Id",
+                    "objectProperty": "id",
+                    "entityProperty": "id"
+                },
+                "count": {
+                    "class": "rocket\\spec\\ei\\component\\field\\impl\\string\\StringEiField",
+                    "props": {
+                        "maxlength": 255
+                    },
+                    "label": "Count",
+                    "objectProperty": "count",
+                    "entityProperty": "count"
+                },
+                "urlStr": {
+                    "class": "rocket\\spec\\ei\\component\\field\\impl\\string\\UrlEiField",
+                    "props": {
+                        "maxlength": 255,
+                        "autoScheme": "http"
+                    },
+                    "label": "Url Str",
+                    "objectProperty": "urlStr",
+                    "entityProperty": "urlStr"
+                },
+                "lastOccurence": {
+                    "class": "rocket\\spec\\ei\\component\\field\\impl\\date\\DateTimeEiField",
+                    "props": {
+                        "mandatory": true
+                    },
+                    "label": "Last Occurence",
+                    "objectProperty": "lastOccurence",
+                    "entityProperty": "lastOccurence"
+                }
+            },
+            "commands": {
+                "addEiCommand": {
+                    "class": "rocket\\spec\\ei\\component\\command\\impl\\common\\AddEiCommand",
+                    "props": []
+                },
+                "overviewEiCommand": {
+                    "class": "rocket\\spec\\ei\\component\\command\\impl\\common\\OverviewEiCommand",
+                    "props": []
+                },
+                "detailEiCommand": {
+                    "class": "rocket\\spec\\ei\\component\\command\\impl\\common\\DetailEiCommand",
+                    "props": []
+                },
+                "editEiCommand": {
+                    "class": "rocket\\spec\\ei\\component\\command\\impl\\common\\EditEiCommand",
+                    "props": []
+                },
+                "deleteEiCommand": {
+                    "class": "rocket\\spec\\ei\\component\\command\\impl\\common\\DeleteEiCommand",
+                    "props": []
+                }
+            },
+            "modificators": [],
+            "defaultMaskId": null
+        },
+        "redirect-redirect-log-entry-success": {
+            "type": "entity",
+            "entity": "redirect\\bo\\RedirectLogEntrySuccess",
+            "dataSourceName": null,
+            "label": "Redirect Log Entry Success",
+            "pluralLabel": "Redirect Log Entry Successs",
+            "defaultSort": {
+                "created": "DESC"
+            },
+            "fields": [],
+            "commands": [],
+            "modificators": [],
+            "defaultMaskId": null
+        }
+    },
+    "commonEiMasks": [],
+    "menuItems": {
+        "redirect-redirect-rule": [],
+        "redirect-redirect-log-entry-fail": [],
+        "redirect-redirect-log-entry-success": [],
+        "redirect-redirect-log-entry-not-found": []
+    }
+}
