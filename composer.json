@@ -1,0 +1,40 @@
+{
+	"name" : "hnm/redirect",
+	"type" : "n2n-tmpl-module",
+	"description" : "Redirect module",
+	"keywords" : [
+		"n2n-tmpl-module",
+		"n2n-module",
+		"n2n"
+	],
+	"homepage" : "https://n2n.rocks/",
+	"license" : "MIT",
+	"authors" : [{
+			"name" : "Nikolai Schmidt",
+			"email" : "schmidt@hnm.ch"
+		}
+	],
+	"minimum-stability" : "dev",
+	"prefer-stable": true,
+	"config" : {
+		"vendor-dir" : "src/vendor"
+	},
+	"require" : {
+		"php" : ">=7.0",
+		"n2n/n2n-composer-module-installer" : "^7.1.3",
+		"n2n/rocket" : "^2"
+	},
+	"require-dev" : {
+		"phpunit/phpunit" : "^9.5"
+	},
+	"autoload" : {
+		"psr-4" : {
+			"redirect\\" : "src/app/redirect"
+		}
+	},
+	"autoload-dev" : {
+		"psr-4" : {
+			"redirect\\" : "src/test/redirect"
+		}
+	}
+}
