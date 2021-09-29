@@ -6,9 +6,9 @@ use n2n\web\http\controller\ControllerAdapter;
 use n2n\web\http\Request;
 use n2n\web\http\Response;
 use n2n\web\http\ResponseListener;
-use n2n\web\http\ResponseObject;
 use redirect\model\RedirectDao;
 use redirect\model\Redirector;
+use n2n\web\http\payload\Payload;
 
 class RedirectFilter extends ControllerAdapter {
 	public function index(RedirectDao $redirectDao, Request $request, TransactionManager $tm) {
@@ -47,7 +47,7 @@ class RedirectListener implements ResponseListener {
 
 	public function onStatusChange(int $newStatus, Response $response) {}
 
-	public function onSend(ResponseObject $responseObject, Response $response) {}
+	public function onSend(Payload $payload, Response $response) {}
 
 	public function onReset(Response $response) {}
 }

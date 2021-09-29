@@ -4,7 +4,6 @@ namespace redirect\bo;
 use n2n\persistence\orm\annotation\AnnoDiscriminatorColumn;
 use n2n\persistence\orm\annotation\AnnoInheritance;
 use n2n\persistence\orm\annotation\AnnoTable;
-use n2n\persistence\orm\annotation\AnnoTransient;
 use n2n\persistence\orm\InheritanceType;
 use n2n\reflection\annotation\AnnoInit;
 use n2n\reflection\ObjectAdapter;

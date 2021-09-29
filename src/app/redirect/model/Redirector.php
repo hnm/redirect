@@ -1,14 +1,12 @@
 <?php
 namespace redirect\model;
 
-use n2n\core\err\WarningError;
 use n2n\util\uri\Url;
-use n2n\web\http\Redirect;
 use n2n\web\http\Response;
-use redirect\bo\RedirectLogEntry;
 use redirect\bo\RedirectLogEntryAdapter;
 use redirect\bo\RedirectRule;
 use redirect\exception\RedirectRuleInvalidTargetUrl;
+use n2n\web\http\payload\impl\Redirect;
 
 class Redirector {
 	private $url;

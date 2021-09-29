@@ -4,11 +4,8 @@ namespace redirect\bo;
 use n2n\persistence\orm\annotation\AnnoTransient;
 use n2n\reflection\annotation\AnnoInit;
 use n2n\reflection\ObjectAdapter;
-use n2n\util\StringUtils;
-use n2n\util\uri\Path;
 use n2n\util\uri\Url;
-use n2n\web\http\path\PathPattern;
-use n2n\web\http\path\PathPatternCompiler;
+use n2n\core\err\WarningError;
 
 class RedirectRule extends ObjectAdapter {
 	private static function _annos(AnnoInit $ai) {

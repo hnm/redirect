@@ -1,5 +1,4 @@
 <?php
-
 namespace redirect\bo;
 
 use n2n\persistence\orm\annotation\AnnoDiscriminatorValue;
