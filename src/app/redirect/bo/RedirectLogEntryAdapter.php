@@ -8,7 +8,14 @@ use n2n\persistence\orm\InheritanceType;
 use n2n\reflection\annotation\AnnoInit;
 use n2n\reflection\ObjectAdapter;
 use n2n\util\uri\Url;
+use rocket\attribute\EiType;
+use rocket\attribute\EiPreset;
+use rocket\op\spec\setup\EiPresetMode;
+use rocket\attribute\impl\EiCmdDelete;
 
+#[EiType()]
+#[EiPreset(EiPresetMode::READ)]
+#[EiCmdDelete]
 abstract class RedirectLogEntryAdapter extends ObjectAdapter implements RedirectLogEntry {
 	private static function _annos(AnnoInit $ai) {
 		$ai->c(new AnnoTable('redirect_log_entry'), new AnnoInheritance(InheritanceType::SINGLE_TABLE),
@@ -25,7 +32,7 @@ abstract class RedirectLogEntryAdapter extends ObjectAdapter implements Redirect
 	 * @param Url|null $fromUrl
 	 * @param string|null $description
 	 */
-	public function __construct(Url $fromUrl = null, string $description = null) {
+	public function __construct(?Url $fromUrl = null, ?string $description = null) {
 		$this->fromUrlStr = (string) $fromUrl;
 		$this->description = $description;
 		$this->created = new \DateTime();
@@ -38,7 +45,7 @@ abstract class RedirectLogEntryAdapter extends ObjectAdapter implements Redirect
 	 * @param \Error|null $e
 	 * @return RedirectLogEntry
 	 */
-	public static function buildWithMessage(Url $url, RedirectRule $redirectRule, bool $success = true, string $errorMessage = null) {
+	public static function buildWithMessage(Url $url, RedirectRule $redirectRule, bool $success = true, ?string $errorMessage = null) {
 		if ($success) {
 			return new RedirectLogEntrySuccess($url, self::createMessage($url, $redirectRule, $errorMessage));
 		}
@@ -51,7 +58,7 @@ abstract class RedirectLogEntryAdapter extends ObjectAdapter implements Redirect
 	 * @param \Error|null $e
 	 * @return string
 	 */
-	public static function createMessage(Url $url, RedirectRule $redirectRule, string $errorMessage = null) {
+	public static function createMessage(Url $url, RedirectRule $redirectRule, ?string $errorMessage = null) {
 		$message = '';
 		if ($errorMessage !== null) {
 			$message .= 'ERROR';

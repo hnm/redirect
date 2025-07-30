@@ -28,6 +28,8 @@ class RedirectListener implements ResponseListener {
 	 */
 	private $redirectDao;
 
+	private TransactionManager $tm;
+
 	public function __construct(Redirector $redirector, RedirectDao $redirectDao, TransactionManager $tm) {
 		$this->redirector = $redirector;
 		$this->redirectDao = $redirectDao;

@@ -6,7 +6,17 @@ use n2n\reflection\annotation\AnnoInit;
 use n2n\reflection\ObjectAdapter;
 use n2n\util\uri\Url;
 use n2n\core\err\WarningError;
+use rocket\attribute\EiMenuItem;
+use rocket\attribute\EiType;
+use rocket\attribute\EiPreset;
+use rocket\op\spec\setup\EiPresetMode;
+use rocket\attribute\impl\EiPropOrder;
+use rocket\attribute\impl\EiPropBool;
+use rocket\attribute\impl\EiPropString;
 
+#[EiMenuItem(groupName: 'Redirect')]
+#[EiType()]
+#[EiPreset(EiPresetMode::EDIT, excludeProps: ['logEntries'])]
 class RedirectRule extends ObjectAdapter {
 	private static function _annos(AnnoInit $ai) {
 		$ai->p('logEntries', new AnnoTransient());
@@ -18,16 +28,17 @@ class RedirectRule extends ObjectAdapter {
 	private $hostPattern;
 	private $pathPattern;
 	private $targetUrlStr;
+	#[EiPropOrder]
 	private $orderIndex;
+	#[EiPropBool]
 	private $isRegex;
 
 	private $logEntries = array();
 
 	public function matches(Url $url) {
-
 		if (!$this->getIsRegex()) {
 			try {
-				return $this->urlEqual($url, Url::create($this->hostPattern)->ext($this->pathPattern));
+				return $this->urlEqual($url);
 			} catch (\InvalidArgumentException $e) {
 				$this->logEntries[] = RedirectLogEntryAdapter::buildWithMessage($url, $this, false, $e->getMessage());
 				return false;
@@ -44,8 +55,16 @@ class RedirectRule extends ObjectAdapter {
 		return true;
 	}
 
-	public function urlEqual(Url $firstUrl, Url $secondUrl) {
-		return (string) $firstUrl === (string) $secondUrl;
+	private function urlEqual(Url $url) {
+		if ($this->hostPattern !== null && (string) $url->getAuthority() !== $this->hostPattern) {
+			return false;
+		}
+
+		if ($this->pathPattern !== null && (string) $url->getPath() !== $this->pathPattern) {
+			return false;
+		}
+
+		return true;
 	}
 
 	/**
@@ -61,8 +80,7 @@ class RedirectRule extends ObjectAdapter {
 	 * @param bool $required
 	 * @return bool
 	 */
-	private function checkRedirectRulePattern(Url $url, string $pattern = null, string $compareStr, bool $required = true) {
-
+	private function checkRedirectRulePattern(Url $url, ?string $pattern, string $compareStr, bool $required = true) {
 		if (!$required && $pattern === null) return true;
 
 		if (strpos($pattern, self::REGEX_DELIMITER) > -1) {
@@ -106,7 +124,7 @@ class RedirectRule extends ObjectAdapter {
 	/**
 	 * @param string $hostPattern
 	 */
-	public function setHostPattern(string $hostPattern = null) {
+	public function setHostPattern(?string $hostPattern = null) {
 		$this->hostPattern = $hostPattern !== null ? trim($hostPattern) : null;
 	}
 
@@ -163,7 +181,7 @@ class RedirectRule extends ObjectAdapter {
 	 * @return mixed
 	 */
 	public function getIsRegex() {
-		return $this->isRegex;
+		return (bool) $this->isRegex;
 	}
 
 	/**
