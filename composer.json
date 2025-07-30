@@ -1,9 +1,8 @@
 {
 	"name" : "hnm/redirect",
-	"type" : "n2n-tmpl-module",
+	"type" : "n2n-module",
 	"description" : "Redirect module",
 	"keywords" : [
-		"n2n-tmpl-module",
 		"n2n-module",
 		"n2n"
 	],
