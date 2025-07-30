@@ -22,7 +22,7 @@
 		}
 	},
 	"require" : {
-		"php" : ">=7.0",
+		"php" : ">=7.4",
 		"n2n/n2n-composer-module-installer" : "^7.1.6",
 		"n2n/rocket" : "^2 || ^4"
 	},
